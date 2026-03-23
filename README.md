@@ -145,10 +145,10 @@ Six metric cards:
 
 ### Agent Performance Table
 11-agent table with per-agent CSAT, SLA%, FCR%, and Ticket Volume. Conditional formatting applied:
-- CSAT < 3.35 → red fill (coaching needed)
-- CSAT ≥ 3.50 → green fill (top performer)
-- SLA% < 70% → red fill
-- SLA% ≥ 90% → green fill
+- CSAT < 3.35 → coaching needed
+- CSAT ≥ 3.50 → top performer
+- SLA% < 70% → 
+- SLA% ≥ 90% → 
 
 ---
 
