@@ -81,7 +81,7 @@ RANDBETWEEN(1,20),
 | 2 | SLA Adherence % | % of tickets not breaching SLA threshold | Critical/High not-Closed flagged as breach |
 | 3 | FCR % | % of tickets resolved on first contact | `Ticket Status = "Closed"` |
 | 4 | Pending Rate | % of tickets awaiting customer response | `Ticket Status = "Pending Customer Response"` |
-| 5 | Avg Utilization % | Avg ticket load vs capacity per agent/month | Tickets per agent ÷ 40 capacity |
+| 5 | Avg Utilization % | Avg ticket load vs capacity per agent/month | Tickets per agent ÷ 160 capacity |
 | 6 | Ticket Volume | Total tickets handled | `COUNTA` of Ticket ID |
 
 ### SLA Breach Logic
@@ -115,26 +115,27 @@ All calculated columns added to the raw dataset:
 | `SLA_Breach` | Priority + Status logic (above) | SLA flag |
 | `FCR_Flag` | `=IF([@[Ticket Status]]="Closed","Yes","No")` | Resolution flag |
 | `Pending_Flag` | `=IF([@[Ticket Status]]="Pending Customer Response","Yes","No")` | Backlog flag |
-| `Agent_ID` | MOD-weighted CHOOSE formula | Agent assignment |
-| `Utilization_Pct` | `=COUNTIFS([Agent_ID],[@Agent_ID],[Month_Num],[@Month_Num])/40` | Load metric |
+| `Agent_name` |  Weighted Random Selector formula - RANDBETWEEN(1, 20) & CHOOSE(index_num, value1, value2, ...) | Agent assignment |
+| `Utilization_Pct` | `=COUNTIFS([Agent_ID],[@Agent_ID],[Month_Num],[@Month_Num])/160` | Load metric |
 
 ---
 
 ## Dashboard Components
 
-> **Screenshot:** *(Add your dashboard screenshot here — `dashboard.png`)*
+> ![Support Team Dashboard_page-0001](https://github.com/user-attachments/assets/48a86dfd-b7d9-4d87-af60-2b0b7dfe2e27)
+
 
 ### KPI Cards (top row)
-Six metric cards with color-coded accent borders:
+Six metric cards:
 
-| KPI | Value | Accent Color |
-|-----|-------|-------------|
-| CSAT Score | 3.4 / 5.0 | Blue |
-| SLA Adherence % | 75% | Green |
-| FCR % | 33% | Teal |
-| Avg Utilization | 53% | Purple |
-| Pending Rate | 34% | Amber |
-| Ticket Volume | 8,469 | Coral |
+| KPI | Value |
+|-----|-------|
+| CSAT Score | 3.4 / 5.0 |
+| SLA Adherence % | 75% |
+| FCR % | 33% |
+| Avg Utilization | 53% |
+| Pending Rate | 34% |
+| Ticket Volume | 8,469 |
 
 ### Charts
 - **Monthly CSAT Trend** — Line chart with 3.5 target reference line
@@ -148,10 +149,6 @@ Six metric cards with color-coded accent borders:
 - CSAT ≥ 3.50 → green fill (top performer)
 - SLA% < 70% → red fill
 - SLA% ≥ 90% → green fill
-
-### Slicers
-- Month slicer connected to all pivot tables
-- Agent slicer connected to all pivot tables
 
 ---
 
@@ -172,7 +169,7 @@ Six metric cards with color-coded accent borders:
 ## Tools & Techniques
 
 - **Microsoft Excel 2016** — full build including pivot tables, charts, slicers
-- **Formulas** — COUNTIF, COUNTIFS, AVERAGEIF, AVERAGEIFS, SUMPRODUCT, COUNTA, CHOOSE, MOD, WEEKNUM, TEXT, IF, AND, OR
+- **Formulas** — COUNTIF, COUNTIFS, AVERAGEIF, AVERAGEIFS, SUMPRODUCT, COUNTA, CHOOSE, RANDBETWEEN, CHOOSE, WEEKNUM, TEXT, IF, AND, OR
 - **Features** — Pivot Tables, Slicers (Report Connections), Conditional Formatting, Combo Charts (dual axis), Data Tables
 
 ---
