@@ -14,7 +14,7 @@ Support teams generate thousands of tickets monthly — but without a structured
 
 This project builds a **monthly operational KPI dashboard** for an 11-agent support team, transforming raw ticket data into a single-screen performance view with agent-level drill-down and interactive month filtering.
 
-> **Real-world context:** This mirrors the reporting framework I owned as Customer Experience Lead at Noon, where I managed performance analytics for a 15–20 person support team tracking CSAT, SLA, AHT, and resolution metrics on a weekly and monthly basis.
+> **Real-world context:** This mirrors the reporting framework I owned as Customer Experience Lead at Noon, where I managed performance analytics for a 11 person support team tracking CSAT, SLA, AHT, and resolution metrics on a monthly basis.
 
 ---
 
